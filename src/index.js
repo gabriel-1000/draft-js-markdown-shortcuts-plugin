@@ -95,16 +95,7 @@ const createMarkdownShortcutsPlugin = (config = { insertEmptyBlockOnReturnWithMo
       store.setEditorState = setEditorState;
       store.getEditorState = getEditorState;
     },
-    
-    onTab(ev) {
-      const editorState = store.getEditorState();
-      const newEditorState = adjustBlockDepth(editorState, ev);
-      if (newEditorState !== editorState) {
-        store.setEditorState(newEditorState);
-        return 'handled';
-      }
-      return 'not-handled';
-    },
+
     handleReturn(ev, editorState) {
       const newEditorState = checkReturnForState(editorState, ev, config);
       if (editorState !== newEditorState) {
